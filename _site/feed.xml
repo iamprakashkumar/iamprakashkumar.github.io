@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-11-07T00:57:53+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Prakash Kumar</title><subtitle>In this place you can find about the things which i came across in daily learning.  I tried to explain it from scratch. Happy learning :-)</subtitle><entry><title type="html">SOP and CORS</title><link href="http://localhost:4000/webapplication/2019/05/20/SOP-and-CORS.html" rel="alternate" type="text/html" title="SOP and CORS" /><published>2019-05-20T17:59:00+05:30</published><updated>2019-05-20T17:59:00+05:30</updated><id>http://localhost:4000/webapplication/2019/05/20/SOP%20and%20CORS</id><content type="html" xml:base="http://localhost:4000/webapplication/2019/05/20/SOP-and-CORS.html">&lt;p&gt;When we visit a website you cant notice what are resources are fetched in backend.&lt;br /&gt;
+To find the list of resource used in the website you should monitor the network activity of that specifice website.&lt;br /&gt;
+This can be done by pressing F12 and then navigate to Network tab.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/17383454/67632536-9e094280-f8ca-11e9-8fbf-acd4ce9b221b.png&quot; alt=&quot;cors network tab&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In this case an website may request resources from different origin.&lt;br /&gt;
+If the origin are unchecked during resource fetching there is a high probability that site also fetch malicious code from outside origin.&lt;/p&gt;
+
+&lt;p&gt;To prevent this browsers follows &lt;strong&gt;SECURITY POLICIES&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Same Origin Policy&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Same Origin Policy is very strict in nature i.e. An resource(such as when using XMLHttpRequest or &lt;img /&gt; element) must interact with its origin only.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;How it detects origin?&lt;/strong&gt;&lt;br /&gt;
+Protocol, Host, Port number&lt;/p&gt;
+
+&lt;p&gt;Internet explorer only checks the Host, Protocol&lt;/p&gt;
+
+&lt;p&gt;In multiple host environment say, to access the &lt;strong&gt;resource.site.com&lt;/strong&gt; you first need to authenticate in &lt;strong&gt;login.site.com&lt;/strong&gt;&lt;br /&gt;
+Hence in this case developer will set the document.domain to root of the domain on both site&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;document.domain = &quot;site.com&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Which allows anything in &lt;strong&gt;site.com&lt;/strong&gt; domain can access the DOM in the current page&lt;br /&gt;
+When an vulnerable page vul.site.com is hosted on internet then &lt;strong&gt;resource.site.com&lt;/strong&gt; is vulnerable too.&lt;br /&gt;
+If a attacker successfully inject an payload to &lt;strong&gt;vul.site.com&lt;/strong&gt; then he can also attack &lt;strong&gt;resource.site.com&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;For security reasons browser restrict cross origin Http request initiated from scripts&lt;/p&gt;
+
+&lt;p&gt;XMLHttpRequest and Fetch API follow this method. It can be overwritten with CORS header.&lt;br /&gt;
+XMLHttpRequest used to retrieve data from url without doing a full page refresh. It is used mostly in Ajax programming.&lt;/p&gt;
+
+&lt;p&gt;However resource loading other host like images,scripts,stylesheets, iframes, forms are not subject to this limitation. For that we need additonal features to monitor those process. Hence we use CSRF Tokens.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;When cross site request are must needed then we use CORS.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2. CORS - Cross Origin Resource Sharing&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;CORS is an mechanism that uses additional HTTP headers to request broswer to give web application running on one origin to access resource from different origin.&lt;/p&gt;
+
+&lt;p&gt;To prevent cross-origin write = Unguessable token in the request(CSRF Token)&lt;br /&gt;
+To prevent cross-origin read = Avoid using embedded resources&lt;/p&gt;
+
+&lt;p&gt;https://resources.infosecinstitute.com/bypassing-same-origin-policy-sop/#gref&lt;/p&gt;</content><author><name></name></author><summary type="html">When we visit a website you cant notice what are resources are fetched in backend. To find the list of resource used in the website you should monitor the network activity of that specifice website. This can be done by pressing F12 and then navigate to Network tab.</summary></entry><entry><title type="html">Burp suite configuration</title><link href="http://localhost:4000/webapplication/2019/05/05/Burp-suite-configuration.html" rel="alternate" type="text/html" title="Burp suite configuration" /><published>2019-05-05T17:46:12+05:30</published><updated>2019-05-05T17:46:12+05:30</updated><id>http://localhost:4000/webapplication/2019/05/05/Burp%20suite%20configuration</id><content type="html" xml:base="http://localhost:4000/webapplication/2019/05/05/Burp-suite-configuration.html">&lt;p&gt;&lt;strong&gt;Getting started with Burp suite&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Burp suite is a tool which is used in penetration testing. It contains collection of tools used to analyse a web application.&lt;br /&gt;
+Before installing Burp into your machine ensure that java is already installed.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$java –version
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If not install a jre in your local machine(jre is enough for this, if you want to develop something in java related platform then jdk is needed for eg, android studio)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$sudo apt-get update  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$sudo apt-get install openjdk-6-jre-headless
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Configuring the browser to use burp suite&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Inorder to intercept the outgoing traffic we need to integrate burp suite with browser. We can manually configure each time to make the browser listen to burp suite, but it tedious and time consuming.&lt;/p&gt;
+
+&lt;p&gt;Preferences -&amp;gt; Network settings -&amp;gt; select manual proxy configuration&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/17383454/57189780-6e3b3c80-6f30-11e9-8b86-101ed41dd781.png&quot; alt=&quot;network&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Since burpsuite is sites in between the browser and the outside internet, you browser will show a warning message. Inorder to solve this you need to install Bupsuite CA certificate in your browser.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/17383454/57189788-814e0c80-6f30-11e9-8219-d28cc92e0e3e.png&quot; alt=&quot;burp ca&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Then import the downloaded certificate to your browser.&lt;/p&gt;</content><author><name></name></author><summary type="html">Getting started with Burp suite</summary></entry><entry><title type="html">Something about apt</title><link href="http://localhost:4000/linux/2019/05/04/Something-about-apt.html" rel="alternate" type="text/html" title="Something about apt" /><published>2019-05-04T01:09:12+05:30</published><updated>2019-05-04T01:09:12+05:30</updated><id>http://localhost:4000/linux/2019/05/04/Something%20about%20apt</id><content type="html" xml:base="http://localhost:4000/linux/2019/05/04/Something-about-apt.html">&lt;p&gt;&lt;strong&gt;Hello,&lt;/strong&gt; (I hope there is someone in the world reading this post)&lt;/p&gt;
+
+&lt;p&gt;One fine day, when i try to install some application for my ubuntu machine. I do an update and try to install that specific application.&lt;br /&gt;
+Then it strikes my mind why the hell that i need to update my machine each time before installing a new application.&lt;br /&gt;
+That results in creation of this post.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;apt-get update vs apt-get upgrade&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Ubuntu&lt;/code&gt; is a Debian based linux and it uses &lt;code class=&quot;highlighter-rouge&quot;&gt;dpkg&lt;/code&gt; packaging system. &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;APT (Advanced Packaging Tool)&lt;/code&gt; is used to interact with packaging system. It is userfriendly when compared to dpkg&lt;br /&gt;
+APT and apt are different&lt;br /&gt;
+There are various tool that can interact with APT to install and manage packages. apt is one such tool that interact with APT&lt;/p&gt;
+
+&lt;p&gt;apt commands contains most widely used features from apt-get and apt-cache.&lt;br /&gt;
+apt command is more user-friendly than compared with apt-get&lt;br /&gt;
+For example : It shows number of upgradable packages, progress bar while installing a package.&lt;br /&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/17383454/57142548-679ab100-6dda-11e9-9f03-0e21196edc45.png&quot; alt=&quot;Image of apt vs apt-get&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Each local ubuntu machine has a copy of list of packages that are in ubuntu’s repository. During the time of installation of any application, apt-get first reads this list and founds a specific url to download the application that the user has intended.&lt;/p&gt;
+
+&lt;p&gt;apt-get update first updates the copy of list of packages if it is changed in main repository.&lt;br /&gt;
+apt-get upgrade installs application depending on updated repository version.&lt;/p&gt;
+
+&lt;p&gt;When you update the package there are 3 commands you will possibly encounter&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Hit - no change in the package version&lt;/li&gt;
+  &lt;li&gt;Get - there is change occured&lt;/li&gt;
+  &lt;li&gt;ign - ignored (This is not an error, no need to worry)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;However it is not necessary to update the repository each time, if you knew that there is no change occured in the main repository.&lt;br /&gt;
+Actually they update their repository because of bugs in the application.&lt;/p&gt;</content><author><name></name></author><summary type="html">Hello, (I hope there is someone in the world reading this post)</summary></entry><entry><title type="html">System Malware-1</title><link href="http://localhost:4000/malware/2019/03/11/System-Malware-1.html" rel="alternate" type="text/html" title="System Malware-1" /><published>2019-03-11T05:06:12+05:30</published><updated>2019-03-11T05:06:12+05:30</updated><id>http://localhost:4000/malware/2019/03/11/System%20Malware-1</id><content type="html" xml:base="http://localhost:4000/malware/2019/03/11/System-Malware-1.html">&lt;p&gt;&lt;strong&gt;Hello world,&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Do you know a simple text editor like gedit contains 128 total source files along with 3 more directories. Counting all 128 files and 3 directories yields &lt;code class=&quot;highlighter-rouge&quot;&gt;70,484&lt;/code&gt; Lines of code. The ration of legitimate application LOC to malware is over &lt;code class=&quot;highlighter-rouge&quot;&gt;500 to 1&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;A keynote by Mudge compared malware LOC with count for security product shows that &lt;strong&gt;for every 1 LOC of offensive firepower, defenders write 10,000 LOC&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Malware plays a part in most computer intrusion and security incidents. Any software that cause harm to a user, computer can be considered as malware. Malware analysis is the art of dissecting malware to understand how it works, how to identify it and how to defeat of eliminate it.&lt;/p&gt;
+
+&lt;p&gt;Flaws that would allow an attacker access a system&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Design Flaw&lt;/li&gt;
+  &lt;li&gt;Hardware Flaw&lt;/li&gt;
+  &lt;li&gt;Human Factor&lt;/li&gt;
+  &lt;li&gt;Bugs in the Program.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Program Flaw&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Application software - SQL injection&lt;/li&gt;
+  &lt;li&gt;System Software - Buffer overflow and overread, Heap - Double free, use after free, Integer overflow, Format string&lt;/li&gt;
+  &lt;li&gt;Side channel attacks - Cache timing attacks, power analysis attack, Fault injection attack.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;While focusing on program bugs in this post we will see C and C++ programs. Because most of the Operating System, Virtual Machines and their underlying libraries are written in C and C++ program only. There are some bugs related to application software like SQL injection but we’re not learn about this now.&lt;/p&gt;
+
+&lt;p&gt;side channel attacks on the other hand, could be attacks on programs which are actually co-react correctly without any presence of any bug&lt;/p&gt;
+
+&lt;p&gt;These attacks can be prevented by designing a system which is flawless. We can place the sytem under closed box and analyse using mathematically by static analysis. a formal proof assistants which has a COQ model checkers and therefore certify that the system is completely flawless&lt;/p&gt;
+
+&lt;p&gt;But it is not possible to develop a system which is completely flawless. It can’t  scalable to large codes, this can be possible only in academic level. one such effort was made by an Australian group called NICTA where they actually develop an operating system called SeL4 and they have been able to prove that SeL4is flawless under certain assumptions&lt;/p&gt;
+
+&lt;p&gt;Second approach testing the system under sandbox environment. In sandbox environment we can contron the malware activity by restricting it to only in that specific environment itself.&lt;/p&gt;
+
+&lt;p&gt;Third approach is to Detect and Mitigate attacks like a antivirus software do.&lt;/p&gt;</content><author><name></name></author><summary type="html">Hello world,</summary></entry><entry><title type="html">Github CommandLineInterface</title><link href="http://localhost:4000/webapplication/2019/02/27/GithubCLI.html" rel="alternate" type="text/html" title="Github CommandLineInterface" /><published>2019-02-27T01:43:12+05:30</published><updated>2019-02-27T01:43:12+05:30</updated><id>http://localhost:4000/webapplication/2019/02/27/GithubCLI</id><content type="html" xml:base="http://localhost:4000/webapplication/2019/02/27/GithubCLI.html">&lt;p&gt;&lt;strong&gt;Post after long time&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;During the time when i publish this blog on github.&lt;br /&gt;
+I doesnt feel any challenge, its just like a cake walk(I forked a repository and make changes online whenever i feel that i want to make a post)&lt;br /&gt;
+When i tried to install git on my local machine then i came through across some challengses and lot of questions. Which all are posted here&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Why command line?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Eventhough there are plenty of GUI available online. Make your hand dirty by working on CLI.&lt;br /&gt;
+When you are a beginner then its ok but when it comes to developers(if you’re planned to) then you must be familiar with CLI&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;CLI will helps in automate your work&lt;/li&gt;
+  &lt;li&gt;CLI is only option for certain task(SSH tunnel into remote server)&lt;/li&gt;
+  &lt;li&gt;You know about what you going through.&lt;/li&gt;
+  &lt;li&gt;If you need some help from community, most of the solutions are available for CLI users(because there are plenty of GUI out there)&lt;/li&gt;
+  &lt;li&gt;It really feels good(Trust me :-)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Connecting to Github from CLI?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;If you don’t want to reenter your passphrase every time you use your SSH key, you can add your key to the SSH agent, which manages your SSH keys and remembers your passphrase.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Please make sure you are already having a ssh key, if you already have one use that one itself.&lt;/li&gt;
+  &lt;li&gt;Else you can generate a new one and use that.&lt;/li&gt;
+  &lt;li&gt;Use the following command to generate ssh key
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;It will prompt you to enter a passphrase.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Then you need to add this ssh key to your ssh agent. To do that&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Start the ssh agent in the background
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ eval &quot;$(ssh-agent -s)&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add your ssh key to the ssh agent. Default it is present in the &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.ssh/id_rsa&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Copy your public key (By default it is present in the following location &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.ssh/id_pub&lt;/code&gt;&lt;br /&gt;
+Then go to your github settins option, select SSH key and then click add ssh key&lt;br /&gt;
+Paste your public key there.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Getting &amp;amp; Creating Projects&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Initialize a local Git repository&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;git init
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Create a local copy of a remote repository&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;git clone ssh://git@github.com/[username]/[repository-name].git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;basic-snapshotting&quot;&gt;Basic Snapshotting&lt;/h3&gt;
+
+&lt;p&gt;To check the status&lt;/p&gt;
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;git status
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Add a file to the staging area&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git add [filename.txt]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Commit changes&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git commit -m &quot;[commit message]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Remove a file&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git rm -r [filename.txt]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Sharing &amp;amp; Updating Projects&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Push a branch to your repository&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git push origin [branch name]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Delete a remote branch&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git push origin --delete [branch name]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Update local repository to the newest commit&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git pull
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Pull changes from remote repository&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git pull origin [branch name]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Inspection &amp;amp; Comparison&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;View chanes&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git log
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;View changes in detailed manner&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git log --summary
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Preview changes from merging&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$git diff [source branch] [target branch]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">Post after long time</summary></entry><entry><title type="html">Package installation from the tar file</title><link href="http://localhost:4000/linux/2019/02/08/Package-installation-through-tar.html" rel="alternate" type="text/html" title="Package installation from the tar file" /><published>2019-02-08T02:05:00+05:30</published><updated>2019-02-08T02:05:00+05:30</updated><id>http://localhost:4000/linux/2019/02/08/Package%20installation%20through%20tar</id><content type="html" xml:base="http://localhost:4000/linux/2019/02/08/Package-installation-through-tar.html">&lt;p&gt;Hi, I tried to install sublime text in my kali machine, while doing that i face some challenges which are documented here.&lt;br /&gt;
+If you are a linux beginner then this post will help you.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;How to install a package from tar ball:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 1&lt;/strong&gt;&lt;br /&gt;
+Download the package from official source(Make sure you are downloading correct package depending on your system whether it is debian or other)&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Mistake 1&lt;/code&gt;: I downloaded RPM package of Libre office for my Kali machine, later only i came to know about that RPM will not support for debian based os.&lt;br /&gt;
+So dont waste your bandwidth here.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 2&lt;/strong&gt;&lt;br /&gt;
+Extract the downloaded package.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 3&lt;/strong&gt;&lt;br /&gt;
+Move that folder to ‘/opt’ directory (In the opt directory only we store third party packages.)&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;mv /your_download_directory   /opt&lt;/p&gt;
+  &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mv&lt;/span&gt; /Downloads/Sublime_Text_3  /opt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 4&lt;/strong&gt;&lt;br /&gt;
+Then we need to create a symbolic link(I made some mistake here, which is added at the end)&lt;/p&gt;
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo ln&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; /opt/Sublime_Text_3/sublime_text  /usr/bin/sublime
+&lt;span class=&quot;go&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Step 5&lt;/strong&gt;
+Inorder to setup sublime to launcher(for ubuntu users)&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;sudo your_favourite_editor(vi,sublime)   /usr/share/applications/sublime.desktop&lt;/p&gt;
+  &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;vi   /usr/share/applications/sublime.desktop
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;Then copy the following text into that file:
+
+[Desktop Entry]
+Version=1.0
+Name=Sublime Text 3
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;Only KDE 4 seems to use GenericName, so we reuse the KDE strings.
+&lt;span class=&quot;gp&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;From Ubuntu&lt;span class=&quot;s1&quot;&gt;'s language-pack-kde-XX-base packages, version 9.04-20090413.
+&lt;/span&gt;&lt;span class=&quot;go&quot;&gt;GenericName=Text Editor
+
+Exec=sublime
+Terminal=false
+Icon=/opt/Sublime Text 3/Icon/48x48/sublime-text.png
+Type=Application
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;Categories=TextEditor;&lt;/span&gt;IDE&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;Development
+&lt;span class=&quot;go&quot;&gt;X-Ayatana-Desktop-Shortcuts=NewWindow
+
+[NewWindow Shortcut Group]
+Name=New Window
+Exec=sublime -n
+TargetEnvironment=Unity
+
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Mistake 2&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;I mentioned that in the &lt;code class=&quot;highlighter-rouge&quot;&gt;step 4&lt;/code&gt; i made some mistake right, lets see whats that is and make me feel awkward&lt;br /&gt;
+I forget to mention the &lt;code class=&quot;highlighter-rouge&quot;&gt;sublime_text&lt;/code&gt; after &lt;code class=&quot;highlighter-rouge&quot;&gt;sublime_text_3&lt;/code&gt;(i dont know why i forget that), hence the symbolic link points to folder.&lt;br /&gt;
+So it cant open sublime when i search for that.&lt;br /&gt;
+For that you can also mention exact path at the &lt;code class=&quot;highlighter-rouge&quot;&gt;Exec= your_path_to_sublime_text&lt;/code&gt; instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;Exec = sublime&lt;/code&gt;(This is the file which we opened to add sublime to the launcher)&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name></name></author><summary type="html">Hi, I tried to install sublime text in my kali machine, while doing that i face some challenges which are documented here. If you are a linux beginner then this post will help you.</summary></entry><entry><title type="html">WebTerminology</title><link href="http://localhost:4000/webapplication/2019/01/30/WebTerminology.html" rel="alternate" type="text/html" title="WebTerminology" /><published>2019-01-30T08:45:00+05:30</published><updated>2019-01-30T08:45:00+05:30</updated><id>http://localhost:4000/webapplication/2019/01/30/WebTerminology</id><content type="html" xml:base="http://localhost:4000/webapplication/2019/01/30/WebTerminology.html">&lt;p&gt;&lt;strong&gt;DNS – Domain Name System&lt;/strong&gt;&lt;br /&gt;
+It is the basic concept that one should know before entering into web related stuff.&lt;br /&gt;
+It is something like alphbet or number…choose which subject you love.(bad joke) i know :grimacing:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Domain–github.io&lt;br /&gt;
+Subdomain–&lt;code class=&quot;highlighter-rouge&quot;&gt;iamprakashkumar&lt;/code&gt;.github.io
+&lt;code class=&quot;highlighter-rouge&quot;&gt;iamprakashkumar&lt;/code&gt; is the subdomain of &lt;code class=&quot;highlighter-rouge&quot;&gt;github.io&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;www&lt;/code&gt;.github.io – Here &lt;code class=&quot;highlighter-rouge&quot;&gt;www&lt;/code&gt; is a subdomain of github&lt;br /&gt;
+github.io will contain some content and www.github.io will contain some other content&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;URL vs URI&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;URL – It defines how to fetch a resource from specific place(http,ftp....)  
+URI – Standard for identifying documents (URN, URL are all types of URI)  
+URN – Identify resource by specific name (urn:isbn:0451450523)  
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;FQDN&lt;/strong&gt; – Fully Qualified Domain Name&lt;br /&gt;
+A proper FQDN ends with a dot at the end.(&lt;strong&gt;github.com&lt;code class=&quot;highlighter-rouge&quot;&gt;.&lt;/code&gt;&lt;/strong&gt;)&lt;br /&gt;
+trailing dot is required to conform to ICANN standards.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Name Server&lt;/strong&gt; – These are present inside the DNS. It only do most of  the work&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Records&lt;/strong&gt; – Records are present inside the zone file.&lt;br /&gt;
+It will do a single mapping.&lt;br /&gt;
+1.It mapps domain name to IP address.&lt;br /&gt;
+2.It defines Name server&lt;br /&gt;
+3.It defines mail server of the domain.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Zone file&lt;/strong&gt; – It maps domain name and ip address(dns translates domain to ip)&lt;br /&gt;
+It resides inside the Name server. It defines what resources are available under a specific domain.&lt;br /&gt;
+The more zone files that a name server has, the more requests it will be able to answer authoritatively.(Recursive Nameserver) &lt;br /&gt;
+The zone’s $ORIGIN is a parameter equal to the zone’s highest level of authority by default.&lt;br /&gt;
+Zone file will contain many record types, some of them are liste below:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;SOA&lt;/strong&gt;
+The Start of Authority, or SOA, record is a mandatory record in all zone files. It must be the first real record in a file (although $ORIGIN or $TTL specifications may appear above).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/17383454/51947072-93a83e00-2449-11e9-8478-a1072f93bb90.png&quot; alt=&quot;SOA Record&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;github.io. - describes root of the zone&lt;br /&gt;
+862&lt;br /&gt;
+IN - represents Internet&lt;br /&gt;
+SOA - Indicator that this is the start of authority&lt;br /&gt;
+ns-1622.awsdns-10.co.uk. - Master Primary name server&lt;br /&gt;
+awsdns-hostmaster.amazon.com. - Email address of the admin for this zone(@ is replaced with dot)&lt;br /&gt;
+1 - Serial number of the zone file.&lt;br /&gt;
+7200 - Refresh interval of the zone.&lt;br /&gt;
+900 - Retry interval of the zone.&lt;br /&gt;
+1209600 - Expiry period&lt;br /&gt;
+86400 - amount of time that the name server will cache a name error if it cannot find the requested name in this file.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.digitalocean.com/community/tutorials/an-introduction-to-dns-terminology-components-and-concepts&quot;&gt;&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">DNS – Domain Name System It is the basic concept that one should know before entering into web related stuff. It is something like alphbet or number…choose which subject you love.(bad joke) i know :grimacing:</summary></entry><entry><title type="html">Lock error</title><link href="http://localhost:4000/linux/2019/01/29/Lock-error.html" rel="alternate" type="text/html" title="Lock error" /><published>2019-01-29T02:38:00+05:30</published><updated>2019-01-29T02:38:00+05:30</updated><id>http://localhost:4000/linux/2019/01/29/Lock%20error</id><content type="html" xml:base="http://localhost:4000/linux/2019/01/29/Lock-error.html">&lt;p&gt;When you started using ubuntu and tried to install some package you will came across the following error and got frustated. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Some of you may try to resolve this by surfing through some random sites and try to put the command which are mentioned in that site.&lt;br /&gt;
+I am taking to myself only.&lt;br /&gt;
+This is exactly what i do in most cases.&lt;/p&gt;
+
+&lt;p&gt;So in this post i will try to teach myself what exactly this means by breaking down each and everthing.&lt;/p&gt;
+
+&lt;p&gt;Lets break things down.&lt;/p&gt;
+
+&lt;p&gt;This is the error which i mentioned previously&lt;/p&gt;
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;E: Could not get lock /var/lib/dpkg/lock - open (11: Resource temporarily unavailable)
+E: Unable to lock the administration directory (/var/lib/dpkg/)
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Why in the world it should get locked?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This is simply means when you try to install a new package, there is some package trying to &lt;strong&gt;updrade&lt;/strong&gt; 
+or running in the background which might be launched by other users of the os.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The way how package management tool on Ubuntu/Debian or any other Linux operating system works is that every time 
+package installation or update is initiated, the package management tool, in this case apt or dpkg, 
+creates a lock file &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/lib/apt/lists/lock&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;var/lib/dpkg/lock&lt;/code&gt; to prevent concurrent execution of another 
+software installation or update process.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;What causes it to lock?&lt;/strong&gt;&lt;br /&gt;
+There is chance that ubuntu tries to update automatically in the background.&lt;br /&gt;
+Solution is wait for it to complete.
+You can also turn off the auto update of package in the background by the following method:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nano /etc/apt/apt.conf.d/20auto-upgrades
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Once you have the file opened, switch off the Update-Package-Lists directive from &lt;strong&gt;1 to 0&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Finding the process and user who holding the lock?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;1.Note the error message thrown in the terminal&lt;br /&gt;
+2.&lt;strong&gt;$sudo fuser &lt;em&gt;Path of lock(see the error message )&lt;/em&gt;&lt;/strong&gt;&lt;br /&gt;
+3.Using tha PID (which is found in step 2) find the user who causes the lock.&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;ps &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; “PID”  &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt;  user,comm,args
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Unlocking the /var/lib/apt/lists/lcok&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Warning: Do not forcefully remove the lock, if there is chance it can be done by itself. Let it do its work.&lt;br /&gt;
+Force remove sometime cause harm to your system.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo kill&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-9&lt;/span&gt; “PID”
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">When you started using ubuntu and tried to install some package you will came across the following error and got frustated.</summary></entry><entry><title type="html">PPA VS Normal</title><link href="http://localhost:4000/linux/2019/01/27/PPA-installation-VS-Normal-installation.html" rel="alternate" type="text/html" title="PPA VS Normal" /><published>2019-01-27T12:38:00+05:30</published><updated>2019-01-27T12:38:00+05:30</updated><id>http://localhost:4000/linux/2019/01/27/PPA%20installation%20VS%20Normal%20installation</id><content type="html" xml:base="http://localhost:4000/linux/2019/01/27/PPA-installation-VS-Normal-installation.html">&lt;p&gt;&lt;strong&gt;How does the following installation are differ from one another?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;add-apt-repository ppa:maco.m/ruby 
+&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update 
+&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;rubygems  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Line1 : adds PPA to your list of sources &lt;br /&gt;
+Line2 :Tells apt-get to get update its database&lt;br /&gt;
+Line3 :finds the updated package from the database and installs it. &lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;rubygems 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It will just install the less recent version of the specific package.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;What is PPA?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;PPA - Personal Package Archives&lt;/em&gt; &lt;br /&gt;
+These are generally used by the people who want latest and greatest. Also it involves some danger(You should definitely know what you are doing).
+Ubuntu distro usually released at every 6 months. Hence if you want some update before their release you can use PPA for that.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can add PPA to your machine using 2 Methods: &lt;br /&gt;
+1.GUI - Ubunutu supports this feature (There are many articles out there please refer those) &lt;br /&gt;
+2.Command line - Refer the question  &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you want to remove the PPA, then just removing the specific repository from the &lt;code class=&quot;highlighter-rouge&quot;&gt;source.list&lt;/code&gt; file is not enough.
+It would be better to remove all the package which are installed along with that installation of PPA and then replace with the default package.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$sudo ppa-purge ppa:&amp;lt;lp-name&amp;gt;/&amp;lt;ppa-name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">How does the following installation are differ from one another?</summary></entry><entry><title type="html">Opcache-php7</title><link href="http://localhost:4000/webapplication/vulnerability/2019/01/19/opcache.html" rel="alternate" type="text/html" title="Opcache-php7" /><published>2019-01-19T07:53:00+05:30</published><updated>2019-01-19T07:53:00+05:30</updated><id>http://localhost:4000/webapplication/vulnerability/2019/01/19/opcache</id><content type="html" xml:base="http://localhost:4000/webapplication/vulnerability/2019/01/19/opcache.html">&lt;p&gt;&lt;strong&gt;Workflow of php:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;code-&amp;gt;Lexical/syntactic anlysis == Tokens == —&amp;gt; compilation === Bytecode —–&amp;gt; Execution&lt;/strong&gt; &lt;br /&gt;&lt;br /&gt;
+ High level machine codes are converted into Tokens by the Lexical analysis phase. Tokens are the one which are pure level code after the removal of comments and linking of the common libraries. Then that are converted into Bytecode for Machine execution.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;OPcache Usage:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Skip the compilation and reach the bytecode&lt;/strong&gt; &lt;br /&gt;
+&lt;strong&gt;3 step is reduced to 2 step&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;By using the Opcache we can skip the compilation phase, because opcache will cache the content which is used once.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;sourcefile: &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/www/html/index.php&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;cachefile: /tmp/OPcache/32-bit string/&lt;code class=&quot;highlighter-rouge&quot;&gt;var/www/html/index.php&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/17383454/51431382-efa2e380-1c4d-11e9-9888-bf0067be82fc.png&quot; alt=&quot;php.bin – binary cache file structure&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;SYSTEM_ID --&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;global &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt; – php verify through this  
+&lt;span class=&quot;gp&quot;&gt;php_info() --&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;target – &lt;span class=&quot;k&quot;&gt;then &lt;/span&gt;we get SYSTEM_ID   
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt; SYSTEM_ID= md5(php_version + zend_extension_id + datatype_size)
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;find 32bit or 64 bit – victim&lt;/li&gt;
+  &lt;li&gt;find system_id – victim&lt;/li&gt;
+  &lt;li&gt;generate a cache file on local machine&lt;/li&gt;
+  &lt;li&gt;replace system_id in cache file&lt;/li&gt;
+  &lt;li&gt;overwrite victim cache file&lt;/li&gt;
+  &lt;li&gt;get a shell&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Data abstraction – providing only the necessary information  &lt;br /&gt;
+1.abstraction usig classes – public, private&lt;br /&gt;
+2.abstraction in header files&lt;/p&gt;</content><author><name></name></author><summary type="html">Workflow of php:</summary></entry></feed>

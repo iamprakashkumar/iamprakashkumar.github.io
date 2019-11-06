@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>SOP and CORS | Prakash Kumar</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="SOP and CORS" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="When we visit a website you cant notice what are resources are fetched in backend. To find the list of resource used in the website you should monitor the network activity of that specifice website. This can be done by pressing F12 and then navigate to Network tab." />
+<meta property="og:description" content="When we visit a website you cant notice what are resources are fetched in backend. To find the list of resource used in the website you should monitor the network activity of that specifice website. This can be done by pressing F12 and then navigate to Network tab." />
+<link rel="canonical" href="http://localhost:4000/webapplication/2019/05/20/SOP-and-CORS.html" />
+<meta property="og:url" content="http://localhost:4000/webapplication/2019/05/20/SOP-and-CORS.html" />
+<meta property="og:site_name" content="Prakash Kumar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-05-20T17:59:00+05:30" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"http://localhost:4000/webapplication/2019/05/20/SOP-and-CORS.html","headline":"SOP and CORS","dateModified":"2019-05-20T17:59:00+05:30","datePublished":"2019-05-20T17:59:00+05:30","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/webapplication/2019/05/20/SOP-and-CORS.html"},"description":"When we visit a website you cant notice what are resources are fetched in backend. To find the list of resource used in the website you should monitor the network activity of that specifice website. This can be done by pressing F12 and then navigate to Network tab.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Prakash Kumar" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Prakash Kumar</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">SOP and CORS</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2019-05-20T17:59:00+05:30" itemprop="datePublished">May 20, 2019
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>When we visit a website you cant notice what are resources are fetched in backend.<br />
+To find the list of resource used in the website you should monitor the network activity of that specifice website.<br />
+This can be done by pressing F12 and then navigate to Network tab.</p>
+
+<p><img src="https://user-images.githubusercontent.com/17383454/67632536-9e094280-f8ca-11e9-8fbf-acd4ce9b221b.png" alt="cors network tab" /></p>
+
+<p>In this case an website may request resources from different origin.<br />
+If the origin are unchecked during resource fetching there is a high probability that site also fetch malicious code from outside origin.</p>
+
+<p>To prevent this browsers follows <strong>SECURITY POLICIES</strong></p>
+
+<p><strong>1. Same Origin Policy</strong></p>
+
+<p>Same Origin Policy is very strict in nature i.e. An resource(such as when using XMLHttpRequest or <img /> element) must interact with its origin only.</p>
+
+<p><strong>How it detects origin?</strong><br />
+Protocol, Host, Port number</p>
+
+<p>Internet explorer only checks the Host, Protocol</p>
+
+<p>In multiple host environment say, to access the <strong>resource.site.com</strong> you first need to authenticate in <strong>login.site.com</strong><br />
+Hence in this case developer will set the document.domain to root of the domain on both site</p>
+
+<p><code class="highlighter-rouge">document.domain = "site.com"</code></p>
+
+<p>Which allows anything in <strong>site.com</strong> domain can access the DOM in the current page<br />
+When an vulnerable page vul.site.com is hosted on internet then <strong>resource.site.com</strong> is vulnerable too.<br />
+If a attacker successfully inject an payload to <strong>vul.site.com</strong> then he can also attack <strong>resource.site.com</strong></p>
+
+<p>For security reasons browser restrict cross origin Http request initiated from scripts</p>
+
+<p>XMLHttpRequest and Fetch API follow this method. It can be overwritten with CORS header.<br />
+XMLHttpRequest used to retrieve data from url without doing a full page refresh. It is used mostly in Ajax programming.</p>
+
+<p>However resource loading other host like images,scripts,stylesheets, iframes, forms are not subject to this limitation. For that we need additonal features to monitor those process. Hence we use CSRF Tokens.</p>
+
+<p><strong>When cross site request are must needed then we use CORS.</strong></p>
+
+<p><strong>2. CORS - Cross Origin Resource Sharing</strong></p>
+
+<p>CORS is an mechanism that uses additional HTTP headers to request broswer to give web application running on one origin to access resource from different origin.</p>
+
+<p>To prevent cross-origin write = Unguessable token in the request(CSRF Token)<br />
+To prevent cross-origin read = Avoid using embedded resources</p>
+
+<p>https://resources.infosecinstitute.com/bypassing-same-origin-policy-sop/#gref</p>
+
+  </div><a class="u-url" href="/webapplication/2019/05/20/SOP-and-CORS.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Prakash Kumar</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Prakash Kumar</li><li><a class="u-email" href="mailto:send2prakashkumar@gmail.com">send2prakashkumar@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/jekyll"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">jekyll</span></a></li><li><a href="https://www.twitter.com/jekyllrb"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jekyllrb</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>In this place you can find about the things which i came across in daily learning.  I tried to explain it from scratch. Happy learning :-)</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
