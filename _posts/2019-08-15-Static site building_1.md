@@ -13,7 +13,8 @@ Git - Version control system
 Github - Webhosting service that uses Git  
 Jekyll - powerful static site generator. It is based on templates(layouts in jekyll) it reduces the same markup used on every pages. We can create a layout and it get used in all pages.  
 
-```{{ content }}``` - This is called liquid tags   
+`{{ content }}`- This is called liquid tags     
+
 
 Why jekyll was called static site generator?  
 static site generators actually collects list of files and build them as a site.  
