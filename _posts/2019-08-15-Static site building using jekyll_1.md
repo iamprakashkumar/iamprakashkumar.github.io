@@ -30,7 +30,7 @@ Static site generators works in same like as Dynamic CMS but in the phase of 3 a
 3. Webserver fetches the jekyll files  
 
 
-**Why i use static site generator?  **  
+**Why i use static site generator?**    
 
 Jekyll is meant for its less complexity nature. It is a static site with an `liquid tags`.  
 To make a static site it enough to know about html, js, css  
