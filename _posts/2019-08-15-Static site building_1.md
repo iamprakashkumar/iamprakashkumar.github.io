@@ -49,4 +49,4 @@ title: Hank Quinlan, Horrible Cop
 
 Above mentioned is called Front-matter and it is placed at top of the file. Jekyll will process this content at first and fetch the necessary layout for the page.  
 
-Every time you commit a file that specifies layout: default at the top, Jekyll will magically generate the full HTML document by replacing `{{content}}` in _layouts/default.html with the contents of the committed file.  
+Every time you commit a file that specifies layout: default at the top, Jekyll will magically generate the full HTML document by replacing \{\{content\}\} in _layouts/default.html with the contents of the committed file.  
