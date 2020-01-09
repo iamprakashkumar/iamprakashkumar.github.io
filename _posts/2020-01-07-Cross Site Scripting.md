@@ -23,7 +23,7 @@ Content-Security-Policy itself disabled the inline javascript but this header ca
 X-XSS-Protection: 0   `XSS filter will be in disabled state`   
 X-XSS-Protection: 1   `If xss is detected browser will sanitize the page`  
 X-XSS-Protection: 1; mode=block   `Broswer will not render the page`  
-X-XSS-Protection: 1; report=<reporting-uri>   `Browser will sanitize and report the violation`
+X-XSS-Protection: 1; report=reporting-uri  `Browser will sanitize and report the violation`
 
 **2.`Content-Security-Policy` Header**  
 
@@ -33,7 +33,11 @@ X-Content-Security-Policy is the older version of CSP
 CSP allows scripts only from whitelisted domain.  
 When domain want to completely prevent XSS can disallow script execution.  
 
-Content-Security-Policy: default-src 'self'  `Content load from own origin, subdomain will be excluded`  
-Content-Security-Policy: default-src 'self' *.trusted.com   `Content from oring and subdomain will be allowed. It doesnt need to be same domain`  
-Content-Security-Policy: default-src 'self'; img-src *; media-src mp4.com mp3.com; script-src uniq.com `Image can be loaded from any site, media is restricted, script will loaded from specific site`  
-Content-Security-Policy: default-src https:ssl.com `site content will be loaded over https`  
+Content-Security-Policy: default-src 'self'    
+`Content load from own origin, subdomain will be excluded`  
+Content-Security-Policy: default-src 'self' *.trusted.com     
+`Content from oring and subdomain will be allowed. It doesnt need to be same domain`  
+Content-Security-Policy: default-src 'self'; img-src *; media-src mp4.com mp3.com; script-src uniq.com   
+`Image can be loaded from any site, media is restricted, script will loaded from specific site`  
+Content-Security-Policy: default-src https:ssl.com   
+`site content will be loaded over https`  
