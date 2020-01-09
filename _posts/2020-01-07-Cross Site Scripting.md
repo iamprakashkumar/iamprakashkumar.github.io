@@ -36,11 +36,14 @@ When domain want to completely prevent XSS can disallow script execution.
 Content-Security-Policy: default-src 'self'    
 `Content load from own origin, subdomain will be excluded`  
 
+  
 Content-Security-Policy: default-src 'self' *.trusted.com     
 `Content from oring and subdomain will be allowed. It doesnt need to be same domain`  
 
+  
 Content-Security-Policy: default-src 'self'; img-src *; media-src mp4.com mp3.com; script-src uniq.com   
 `Image can be loaded from any site, media is restricted, script will loaded from specific site`  
 
+  
 Content-Security-Policy: default-src https:ssl.com   
 `site content will be loaded over https`  
