@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: In this place you can find about the things which i came across in my learning.  
-My site has no ads, sponsors, or bullshit.  
+My site has no ads, sponsors.   
 If you enjoy my content, please consider supporting what I do.
 email: send2prakashkumar@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
