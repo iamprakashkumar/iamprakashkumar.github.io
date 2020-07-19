@@ -1,4 +1,10 @@
- 
+---
+layout: post
+title: Containers
+date: 2020-07-19 16:18:00
+desc: Containers
+--- 
+
 2: Create a custom Docker Image built from a Dockerfile and push it to a central registry where it can be pulled to be deployed on other environments. Learn about the union file system and copy-on-write, and how they help you deliver applications faster  
 3: Deploy containers using Docker swarm and learn how Docker Swarm helps solve problems such as reconciliation, scaling, high availability and service discovery. In this lab, we'll use Play-with-Docker for a multi-node cluster rather than use your locally installed Docker.  
  
