@@ -52,5 +52,158 @@ After that we need to launch the wireshark with the sudo privileage
 
 ![Successful installation](https://user-images.githubusercontent.com/17383454/73774173-84b94180-47a9-11ea-8e36-360e0e7bf2e1.png)  
 
+**Data packets capturing**  
+
+To start capturing  
+• Select a network interface  
+• Click on the blue shark fin button / press Ctrl + E  
+
+To stop capturing st capturing  
+• Click on the red stop button / press Ctrl + E  
+
+Top frame:  
+Number | Time | Source | Destination | Protocol | Length | Info  
+
+Middle frame examples  
+1. Frame
+2. Linux cooked capture
+3. Internet protocol version, source, destination
+4. Transmission control protocol, src port, dst port, seq, len  
+
+Bottom frame:  
+Data  
+
+**Wireshark Filters**  
+
+There are 2 ways to filter:  
+• Build a filter via the fancy GUI (Expression button)  
+• Type a filter into the “Apply a display filter” entry field (below the toolbar)  
+   https://wiki.wireshark.org/DisplayFilters
+
+
+**Wireshark Filters Relations**  
+
+**Most common Wireshark filters**
+
+tcp.port eq 80 
+tcp.srcport==443  
+
+Filter for HTTP and HTTPS traffic:  
+tcp.port==443 or tcp.port==80  
+ssl or http   
+
+tcp.port in {80 443 8080}    
+tcp.port == 80 || tcp.port == 443 || tcp.port == 8080  
+
+Filter for a protocol:  
+tcp  
+udp  
+dns  
+
+IP addresses:  
+ip.addr == 10.43.54.65  
+! ( ip.addr == 10.43.54.65 )  
+
+Examples for web traffic:  
+http.request.uri == https://www.wireshark.org/  
+http.host matches "acme\.(org|com|net)"  
+http.response.code == 200  
+http.request.method == "GET“  
+tcp contains "admin"  
+
+Filter for http traffic with specific addresses and frame time and not 200 response (e.g. you want to see 301 Moved permanently and 500 Server error packets):  
+
+'''http && ( (ip.dst == 192.168.178.27 ) || (ip.dst == 193.70.91.56 ) ) && frame.time > "2019-01-24 00:01:00.0000" && frame.time < "2019-01-25 15:01:53.0000" && http.response.code != 200'''  
+
+**SSL ManInTheMiddle with Wireshark**  
+
+To test the decryption of SSL traffic with Wireshark:  
+• Create private keys of the server and the client  
+• Start a server which uses the certificate with the key and send some test packets  
+• Configure Wireshark  
+
+**Create certificates**  
+
+Create a server certificate  
+'''openssl req -new -x509 -out server.crt -nodes -keyout server.pem -subj /CN=localhost'''  
+
+Create a client certificate  
+'''openssl req -new -x509 -nodes -out client.crt -keyout client.key -subj /CN=Moi/O=Foo/C=NL'''  
+
+**Start a server**  
+
+Start a server at localhost:4443  
+'''openssl s_server -cipher AES256-SHA -accept 4443 -www -CAfile client.crt -verify 1 -key server.pem -cert server.crt '''  
+
+**Send a request with python(3) and stop the capture**  
+
+
+'''import urllib.request  
+import ssl  
+context = ssl._create_unverified_context() with urllib.request.urlopen("https://localhost:4443/",context=context) as url:  
+ s = url.read()  
+ print(s)'''    
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
